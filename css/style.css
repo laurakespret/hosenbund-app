@@ -1,0 +1,807 @@
+/* Hosenbund – 80er Aerobic/Memphis-Look. Alle Farben als Variablen. Keine festen Farben weiter unten verwenden. */
+
+:root {
+  color-scheme: light;
+  --grund: #fff6e9;          /* Seitenhintergrund */
+  --flaeche: #ffffff;        /* Karten */
+  --flaeche-2: #fff1c9;      /* Eingabefelder, Chips */
+  --linie: #eadcc4;
+  --text: #1a1a2e;
+  --text-2: #47425c;
+  --text-3: #6f6a85;
+  --akzent: #ff2e88;          /* Hot Pink: Hauptknöpfe, aktive Auswahl */
+  --akzent-text: #1a1a2e;     /* Text auf Pink/Gelb/Türkis, in beiden Modi dunkel (Kontrast) */
+  --akzent-hell: #ffd6e8;
+  --gut: #12b5b0;             /* Türkis: Baustein erfüllt, Haken */
+  --gut-hell: #c8f3ef;
+  --gelb: #ffd23f;
+  --lila: #7b4ddb;
+  --gefahr: #c81e3a;
+  --warn-hell: #ffe1d6;
+  --kontur: #1a1a2e;          /* dicke Ränder */
+  --schatten-farbe: #1a1a2e;  /* harte Schatten */
+  /* Diagramm (Palette aus dem dataviz-Skill, Slot 7 Violett) */
+  --serie-1: #6250d6;
+  --punkt: #aaa1bd;
+  --gitter: #efe5d3;
+  --band: #f1e9ff;          /* Pillenpause im Diagramm */
+  --schatten: 3px 3px 0 var(--schatten-farbe);
+  --muster: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' opacity='.15'%3E%3Cpath d='M22 30 l14 -22 l14 22 z' fill='%23ff2e88'/%3E%3Ccircle cx='140' cy='34' r='9' fill='%23ffd23f'/%3E%3Cpath d='M96 92 q8 -12 16 0 t16 0 t16 0' fill='none' stroke='%2312b5b0' stroke-width='5' stroke-linecap='round'/%3E%3Crect x='34' y='120' width='14' height='14' fill='%237b4ddb' transform='rotate(20 41 127)'/%3E%3Ccircle cx='150' cy='150' r='3' fill='%231a1a2e'/%3E%3Ccircle cx='70' cy='70' r='3' fill='%231a1a2e'/%3E%3Ccircle cx='110' cy='150' r='3' fill='%231a1a2e'/%3E%3Cpath d='M8 168 l10 -10 l10 10 l10 -10' fill='none' stroke='%23ff2e88' stroke-width='4'/%3E%3C/svg%3E");
+  --titel-schatten: var(--gelb);
+  --zickzack: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10'%3E%3Cpath d='M0 8 l6 -6 l6 6 l6 -6 l6 6' fill='none' stroke='%23ff2e88' stroke-width='3'/%3E%3C/svg%3E");
+  --radius: 14px;
+  --schrift: 'Rubik', ui-rounded, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --titel: 'Righteous', 'Rubik', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  color-scheme: dark;
+  --grund: #1c1430;          /* Seitenhintergrund */
+  --flaeche: #2a1f45;        /* Karten */
+  --flaeche-2: #3a2c5c;      /* Eingabefelder, Chips */
+  --linie: #4a3a70;
+  --text: #fff4fb;
+  --text-2: #dccbf0;
+  --text-3: #ab9ac6;
+  --akzent: #ff4f9e;          /* Hot Pink: Hauptknöpfe, aktive Auswahl */
+  --akzent-text: #1a1a2e;     /* Text auf Pink/Gelb/Türkis, in beiden Modi dunkel (Kontrast) */
+  --akzent-hell: #5a2347;
+  --gut: #2ad4ce;             /* Türkis: Baustein erfüllt, Haken */
+  --gut-hell: #1b4950;
+  --gelb: #ffd23f;
+  --lila: #a98bff;
+  --gefahr: #ff6b7d;
+  --warn-hell: #4a2433;
+  --kontur: #e9dcff;          /* dicke Ränder */
+  --schatten-farbe: #ff4f9e;  /* harte Schatten */
+  /* Diagramm (Palette aus dem dataviz-Skill, Slot 7 Violett) */
+  --serie-1: #9085e9;
+  --punkt: #7a6a9c;
+  --gitter: #3f3260;
+  --band: #33284f;
+  --schatten: 3px 3px 0 var(--schatten-farbe);
+  --muster: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' opacity='.12'%3E%3Cpath d='M22 30 l14 -22 l14 22 z' fill='%23ff4f9e'/%3E%3Ccircle cx='140' cy='34' r='9' fill='%23ffd23f'/%3E%3Cpath d='M96 92 q8 -12 16 0 t16 0 t16 0' fill='none' stroke='%232ad4ce' stroke-width='5' stroke-linecap='round'/%3E%3Crect x='34' y='120' width='14' height='14' fill='%23a98bff' transform='rotate(20 41 127)'/%3E%3Ccircle cx='150' cy='150' r='3' fill='%23e9dcff'/%3E%3Ccircle cx='70' cy='70' r='3' fill='%23e9dcff'/%3E%3Ccircle cx='110' cy='150' r='3' fill='%23e9dcff'/%3E%3Cpath d='M8 168 l10 -10 l10 10 l10 -10' fill='none' stroke='%23ff4f9e' stroke-width='4'/%3E%3C/svg%3E");
+  --titel-schatten: var(--akzent);
+  --zickzack: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10'%3E%3Cpath d='M0 8 l6 -6 l6 6 l6 -6 l6 6' fill='none' stroke='%23ff4f9e' stroke-width='3'/%3E%3C/svg%3E");
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --grund: #1c1430;          /* Seitenhintergrund */
+  --flaeche: #2a1f45;        /* Karten */
+  --flaeche-2: #3a2c5c;      /* Eingabefelder, Chips */
+  --linie: #4a3a70;
+  --text: #fff4fb;
+  --text-2: #dccbf0;
+  --text-3: #ab9ac6;
+  --akzent: #ff4f9e;          /* Hot Pink: Hauptknöpfe, aktive Auswahl */
+  --akzent-text: #1a1a2e;     /* Text auf Pink/Gelb/Türkis, in beiden Modi dunkel (Kontrast) */
+  --akzent-hell: #5a2347;
+  --gut: #2ad4ce;             /* Türkis: Baustein erfüllt, Haken */
+  --gut-hell: #1b4950;
+  --gelb: #ffd23f;
+  --lila: #a98bff;
+  --gefahr: #ff6b7d;
+  --warn-hell: #4a2433;
+  --kontur: #e9dcff;          /* dicke Ränder */
+  --schatten-farbe: #ff4f9e;  /* harte Schatten */
+  /* Diagramm (Palette aus dem dataviz-Skill, Slot 7 Violett) */
+  --serie-1: #9085e9;
+  --punkt: #7a6a9c;
+  --gitter: #3f3260;
+  --band: #33284f;
+  --schatten: 3px 3px 0 var(--schatten-farbe);
+  --muster: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' opacity='.12'%3E%3Cpath d='M22 30 l14 -22 l14 22 z' fill='%23ff4f9e'/%3E%3Ccircle cx='140' cy='34' r='9' fill='%23ffd23f'/%3E%3Cpath d='M96 92 q8 -12 16 0 t16 0 t16 0' fill='none' stroke='%232ad4ce' stroke-width='5' stroke-linecap='round'/%3E%3Crect x='34' y='120' width='14' height='14' fill='%23a98bff' transform='rotate(20 41 127)'/%3E%3Ccircle cx='150' cy='150' r='3' fill='%23e9dcff'/%3E%3Ccircle cx='70' cy='70' r='3' fill='%23e9dcff'/%3E%3Ccircle cx='110' cy='150' r='3' fill='%23e9dcff'/%3E%3Cpath d='M8 168 l10 -10 l10 10 l10 -10' fill='none' stroke='%23ff4f9e' stroke-width='4'/%3E%3C/svg%3E");
+  --titel-schatten: var(--akzent);
+  --zickzack: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10'%3E%3Cpath d='M0 8 l6 -6 l6 6 l6 -6 l6 6' fill='none' stroke='%23ff4f9e' stroke-width='3'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--grund);
+  color: var(--text);
+  font-family: var(--schrift);
+  font-size: 16px;
+  line-height: 1.5;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.haupt {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px calc(96px + env(safe-area-inset-bottom));
+}
+h1 { font-size: 1.6rem; font-weight: 800; margin: 4px 0 16px; letter-spacing: -.01em; }
+h2 { font-size: 1.05rem; font-weight: 800; margin: 0 0 12px; }
+p { margin: 0 0 10px; }
+.unterzeile { color: var(--text-2); font-size: .95rem; }
+.hinweis { color: var(--text-2); font-size: .9rem; margin: 8px 0 0; }
+.warnung { background: var(--warn-hell); color: var(--text); padding: 10px 12px; border-radius: 12px; font-size: .92rem; }
+.lob { color: var(--gut); font-weight: 700; margin: 10px 0 0; }
+.fuss { text-align: center; color: var(--text-3); font-size: .8rem; margin-top: 24px; }
+
+/* Karten */
+.karte {
+  background: var(--flaeche);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--schatten);
+}
+.karten-kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.karten-kopf h2 { margin: 0; }
+
+/* Formular */
+.formular { display: grid; gap: 12px; }
+.feld { display: grid; gap: 4px; min-width: 0; }
+.feld-label { font-size: .85rem; font-weight: 700; color: var(--text-2); }
+.feld small { color: var(--text-3); font-size: .8rem; }
+.zweier { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+input, select, textarea {
+  width: 100%;
+  min-width: 0;
+  background: var(--flaeche-2);
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 1rem;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--akzent); }
+input:disabled { opacity: .7; }
+textarea { resize: vertical; }
+#eingabe-gewicht, #eingabe-bauch { font-size: 1.5rem; font-weight: 800; }
+
+.knopf {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: var(--flaeche-2);
+  font-weight: 700;
+  cursor: pointer;
+}
+.knopf:hover { filter: brightness(.97); }
+.haupt-knopf { background: var(--akzent); color: var(--akzent-text); padding: 14px 20px; font-size: 1.05rem; }
+.gefahr { color: var(--gefahr); }
+.knopfreihe { display: flex; flex-wrap: wrap; gap: 8px; }
+.link { background: none; border: 0; padding: 0; color: var(--akzent); font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.rund {
+  width: 40px; height: 40px;
+  flex: none;
+  border-radius: 50%;
+  border: 0;
+  background: var(--flaeche-2);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+.rund.klein { width: 34px; height: 34px; font-size: 1.1rem; }
+.rund:disabled { opacity: .35; cursor: default; }
+
+/* Start */
+.start-kopf { text-align: center; margin: 12px 0 20px; }
+.logo { font-size: 3rem; line-height: 1; }
+.start-kopf h1 { font-size: 2rem; margin: 8px 0 4px; }
+.vorschau p { background: var(--akzent-hell); padding: 10px 12px; border-radius: 12px; font-size: .93rem; margin: 0 0 8px; }
+
+/* Heute */
+.tagwahl { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.tagwahl-text { flex: 1; text-align: center; min-width: 0; }
+.tagwahl-text h1 { margin: 0; font-size: 1.4rem; }
+
+.punkte { display: flex; align-items: center; gap: 4px; }
+.punkt-mini { width: 10px; height: 10px; border-radius: 50%; background: var(--flaeche-2); }
+.punkt-mini.an { background: var(--gut); }
+.punkte-text { font-weight: 800; font-size: .9rem; margin-left: 6px; color: var(--text-2); }
+
+.bausteine { list-style: none; margin: 0; padding: 0; }
+.baustein { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--linie); }
+.bausteine .baustein:first-child { border-top: 0; }
+.b-icon { font-size: 1.5rem; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 12px; background: var(--flaeche-2); flex: none; }
+.baustein.erfuellt .b-icon { background: var(--gut-hell); }
+.b-text { flex: 1; min-width: 0; }
+.b-label { font-weight: 700; }
+.b-text small { color: var(--text-3); font-size: .8rem; display: block; line-height: 1.35; }
+.genuss { border: 0; padding: 0; }
+
+.stepper { display: flex; align-items: center; gap: 6px; flex: none; }
+.stepper output { min-width: 24px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
+input.klein { width: 96px; flex: none; text-align: right; padding: 8px 10px; font-weight: 700; }
+.haken {
+  width: 40px; height: 40px; flex: none;
+  border-radius: 12px;
+  border: 2px solid var(--linie);
+  background: var(--flaeche);
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--akzent-text);
+  cursor: pointer;
+}
+.haken.an { background: var(--gut); border-color: var(--gut); color: var(--flaeche); }
+
+.tipp { background: var(--akzent-hell); border-radius: var(--radius); padding: 14px 16px; font-size: .93rem; margin-bottom: 14px; }
+
+/* Kacheln */
+.kacheln { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.kacheln.drei { grid-template-columns: repeat(3, 1fr); }
+.karte .kacheln .kachel { background: var(--flaeche-2); box-shadow: none; }
+.kachel { background: var(--flaeche); border-radius: 14px; padding: 12px 14px; box-shadow: var(--schatten); min-width: 0; }
+.kachel-label { font-size: .8rem; color: var(--text-2); font-weight: 700; }
+.kachel-wert { font-size: 1.3rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.25; margin: 2px 0; }
+.kachel-zusatz { font-size: .78rem; color: var(--text-3); line-height: 1.35; }
+
+.chips { display: flex; gap: 8px; margin-bottom: 14px; }
+.chip { border: 0; border-radius: 999px; padding: 7px 14px; background: var(--flaeche); box-shadow: var(--schatten); font-weight: 700; font-size: .9rem; cursor: pointer; color: var(--text-2); }
+.chip.an { background: var(--akzent); color: var(--akzent-text); }
+
+/* Diagramm */
+.chart { position: relative; }
+.chart svg { display: block; overflow: visible; touch-action: pan-y; }
+.chart .leer { color: var(--text-3); text-align: center; padding: 30px 0; }
+.gitter line { stroke: var(--gitter); stroke-width: 1; }
+.gitter text, .achse text { fill: var(--text-3); font-size: 11px; font-variant-numeric: tabular-nums; }
+.ziellinie { stroke: var(--text-3); stroke-width: 1; }
+.zieltext { fill: var(--text-2); font-size: 11px; font-weight: 700; }
+.messpunkte circle { fill: var(--punkt); }
+.trend { fill: none; stroke: var(--serie-1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.endpunkt, .fokus { fill: var(--serie-1); stroke: var(--flaeche); stroke-width: 2; }
+.endtext { fill: var(--text); font-size: 12px; font-weight: 800; }
+.kreuz { stroke: var(--text-3); stroke-width: 1; }
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  box-shadow: var(--schatten);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: .8rem;
+  white-space: nowrap;
+  z-index: 2;
+}
+.legende { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .82rem; color: var(--text-2); margin: -4px 0 6px; }
+.key { display: inline-block; flex: none; }
+.key.punkt { width: 8px; height: 8px; border-radius: 50%; background: var(--punkt); }
+.key.linie { width: 16px; height: 2px; border-radius: 1px; background: var(--serie-1); margin-left: 8px; }
+.tooltip .key { margin: 0 6px 2px 0; vertical-align: middle; }
+
+details summary { cursor: pointer; font-weight: 700; color: var(--text-2); font-size: .9rem; }
+.tabelle { margin-top: 10px; }
+.tabelle table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: .88rem; font-variant-numeric: tabular-nums; }
+.tabelle th, .tabelle td { text-align: right; padding: 4px 6px; border-bottom: 1px solid var(--linie); }
+.tabelle th:first-child, .tabelle td:first-child { text-align: left; }
+.info p { margin-top: 10px; font-size: .93rem; }
+.info summary { color: var(--text); font-size: 1rem; }
+
+/* Woche */
+.raster-scroll { overflow-x: auto; margin: 0 -4px; }
+.raster { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.raster th, .raster td { padding: 6px 3px; text-align: center; }
+.raster tbody th { text-align: left; font-weight: 600; white-space: nowrap; padding-right: 8px; max-width: 160px; overflow: hidden; text-overflow: ellipsis; }
+.raster thead th { font-weight: 700; color: var(--text-2); }
+.raster thead th.heute .link { color: var(--text); text-decoration-thickness: 2px; }
+.raster thead .link { text-decoration: none; color: var(--text-2); }
+.kreis { display: inline-block; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--linie); vertical-align: middle; }
+.kreis.an { background: var(--gut); border-color: var(--gut); }
+.raster .summe td, .raster .summe th { font-weight: 800; border-top: 1px solid var(--linie); }
+.leise { color: var(--text-3); }
+
+/* Navigation unten */
+.nav {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: flex; justify-content: center; gap: 4px;
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--flaeche) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--linie);
+  z-index: 10;
+}
+.nav-knopf {
+  flex: 1; max-width: 140px;
+  display: grid; justify-items: center; gap: 0;
+  border: 0; background: none; border-radius: 14px;
+  padding: 6px 4px;
+  font-size: .78rem; font-weight: 700; color: var(--text-2);
+  cursor: pointer;
+}
+.nav-icon { font-size: 1.3rem; line-height: 1.2; filter: grayscale(.6); opacity: .8; }
+.nav-knopf.aktiv { background: var(--akzent-hell); color: var(--text); }
+.nav-knopf.aktiv .nav-icon { filter: none; opacity: 1; }
+
+.toast {
+  position: fixed; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom));
+  transform: translate(-50%, 20px);
+  background: var(--text); color: var(--grund);
+  padding: 10px 18px; border-radius: 999px;
+  font-weight: 700; font-size: .92rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  max-width: calc(100vw - 32px);
+  z-index: 20;
+}
+.toast.sichtbar { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 420px) {
+  .kacheln.drei:not(.fakten) { grid-template-columns: 1fr; }
+  .kacheln.fakten .kachel { padding: 10px; }
+  .kacheln.fakten .kachel-wert { font-size: 1.05rem; }
+  .kachel-wert { font-size: 1.15rem; }
+}
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+
+/* Phase 1: Handy, Health, Serie */
+.serie { display: inline-block; margin-top: 6px; padding: 3px 10px; border-radius: 999px; background: var(--gut-hell); color: var(--text); font-size: .82rem; font-weight: 700; }
+.health-knopf { width: 100%; margin-bottom: 14px; background: var(--flaeche); box-shadow: var(--schatten); padding: 12px 18px; }
+.mit-zu { position: relative; padding-right: 44px; }
+.zu { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; border-radius: 50%; background: transparent; font-size: 1.3rem; line-height: 1; cursor: pointer; color: var(--text-2); }
+.symbol { display: inline-block; padding: 0 4px; border: 1px solid var(--linie); border-radius: 6px; font-size: .85em; }
+.schnellstart { padding: 4px 0 12px; }
+.schnellstart h3 { font-size: 1rem; margin: 14px 0 6px; }
+.schnellstart ol { padding-left: 22px; margin: 8px 0; font-size: .92rem; }
+.schnellstart li { margin-bottom: 6px; }
+.schnellstart #kurzbefehl-laden { display: block; color: var(--text); text-align: center; text-decoration: none; margin: 6px 0 4px; }
+.anleitung { border-top: 1px solid var(--linie); padding: 10px 0 2px; }
+.anleitung summary { color: var(--text); font-size: .95rem; }
+.anleitung ol { padding-left: 22px; margin: 10px 0; font-size: .92rem; }
+.anleitung li { margin-bottom: 8px; }
+.anleitung li small { color: var(--text-3); }
+code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .8rem; background: var(--flaeche-2); padding: 2px 6px; border-radius: 6px; word-break: break-all; display: inline-block; margin: 4px 0; }
+
+/* Phase 2: Training */
+.segment { display: flex; background: var(--flaeche-2); border-radius: 12px; padding: 3px; gap: 3px; }
+.segment button { flex: 1; border: 0; background: transparent; border-radius: 9px; padding: 8px 10px; font-weight: 700; color: var(--text-2); cursor: pointer; }
+.segment button.an { background: var(--flaeche); color: var(--text); box-shadow: var(--schatten); }
+.segment.gross { margin-bottom: 14px; background: var(--flaeche); box-shadow: var(--schatten); }
+.segment.gross button.an { background: var(--akzent); color: var(--akzent-text); }
+.breit { width: 100%; margin-top: 8px; }
+.zentriert { text-align: center; }
+.tage-wahl { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.tag-knopf { border: 0; border-radius: 12px; padding: 10px 0; background: var(--flaeche-2); font-weight: 800; color: var(--text-2); cursor: pointer; }
+.tag-knopf.an { background: var(--akzent); color: var(--akzent-text); }
+.uebungsliste { padding-left: 22px; margin: 6px 0 4px; font-size: .93rem; }
+.verlauf-liste { list-style: none; margin: 0; padding: 0; }
+.verlauf-liste li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--linie); font-size: .93rem; }
+.verlauf-liste li:first-child { border-top: 0; }
+.verlauf-liste li span:first-child { color: var(--text-2); font-weight: 700; }
+
+.training-hinweis { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+.training-hinweis.erledigt { color: var(--gut); font-weight: 800; justify-content: center; }
+.pfeil { font-size: 1.6rem; color: var(--text-3); }
+
+.einheit-kopf { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.einheit-kopf h1 { margin-bottom: 2px; }
+.fortschritt { height: 6px; border-radius: 3px; background: var(--flaeche-2); margin: 12px 0 16px; overflow: hidden; }
+.fortschritt div { height: 100%; background: var(--gut); border-radius: 3px; transition: width .3s; }
+.schritt { display: flex; gap: 12px; align-items: flex-start; }
+.schritt-text { color: var(--text-2); font-size: .9rem; }
+.schritt.erledigt .schritt-text { color: var(--text-3); }
+.uebung-kopf { display: flex; gap: 12px; align-items: center; margin-bottom: 6px; }
+.uebung-kopf h2 { margin: 0; }
+.nummer { width: 30px; height: 30px; flex: none; border-radius: 50%; background: var(--akzent-hell); display: grid; place-items: center; font-weight: 800; }
+.letztes-mal { font-size: .85rem; color: var(--text-2); margin: 4px 0; }
+.steigern { font-size: .85rem; font-weight: 700; color: var(--gut); background: var(--gut-hell); padding: 6px 10px; border-radius: 10px; margin: 6px 0; }
+.so-gehts { margin: 6px 0 8px; }
+.so-gehts p { font-size: .9rem; margin-top: 6px; }
+.saetze { display: grid; gap: 8px; margin-top: 8px; }
+.satz { display: grid; grid-template-columns: 46px 1fr 1fr 40px; gap: 6px; align-items: center; padding: 6px 8px; border-radius: 12px; background: var(--flaeche-2); }
+.satz.ok { background: var(--gut-hell); }
+.satz-nr { font-weight: 800; font-size: .85rem; color: var(--text-2); }
+.satz-feld { display: flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--text-3); min-width: 0; }
+.satz-feld input.klein { flex: 1; width: auto; min-width: 0; max-width: 72px; padding: 8px 4px; background: var(--flaeche); text-align: center; }
+.satz-feld span { flex: none; }
+.pause {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(76px + env(safe-area-inset-bottom));
+  display: flex; align-items: center; gap: 10px;
+  background: var(--akzent); color: var(--akzent-text);
+  padding: 10px 18px; border-radius: 999px; box-shadow: var(--schatten);
+  font-variant-numeric: tabular-nums; z-index: 15; white-space: nowrap;
+}
+.pause .link { color: var(--akzent-text); }
+
+/* Phase 3: Rezepte */
+.oben { margin: -4px 0 12px; }
+.essen-hinweis { width: 100%; border: 0; font: inherit; text-align: left; cursor: pointer; }
+.essensplan { list-style: none; margin: 0; padding: 0; }
+.essensplan li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--linie); }
+.essensplan li:first-child { border-top: 0; }
+.essensplan li.heute .tag-spalte strong { background: var(--akzent); color: var(--akzent-text); }
+.tag-spalte { width: 44px; flex: none; display: grid; justify-items: center; gap: 2px; }
+.tag-spalte strong { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--flaeche-2); font-size: .85rem; }
+.mini-badge { font-size: .8rem; }
+.rezept-zeile { flex: 1; min-width: 0; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; display: grid; }
+.rezept-zeile small { color: var(--text-3); font-size: .8rem; }
+.rezept-name { font-weight: 700; line-height: 1.3; }
+.chips.scroll { overflow-x: auto; flex-wrap: nowrap; padding: 2px 2px 6px; margin: 0 -2px 8px; scrollbar-width: none; }
+.chips.scroll .chip { white-space: nowrap; flex: none; }
+.rezept-liste { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rezept-karte { border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; margin: 0; display: grid; gap: 6px; align-content: start; padding: 14px; }
+.rezept-oben { display: flex; justify-content: space-between; color: var(--gefahr); }
+.klein-text { font-size: .78rem; font-weight: 700; }
+.rezept-fakten { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: .78rem; color: var(--text-2); }
+.detail-kopf { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.fav { padding: 8px 14px; }
+.fav.an { background: var(--warn-hell); color: var(--gefahr); }
+.tag-reihe { display: flex; flex-wrap: wrap; gap: 6px; margin: -6px 0 14px; }
+.mini-tag { font-size: .78rem; font-weight: 700; background: var(--flaeche); box-shadow: var(--schatten); padding: 3px 10px; border-radius: 999px; }
+.zutaten, .einkauf { list-style: none; margin: 0; padding: 0; }
+.zutaten li, .einkauf li { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--linie); font-size: .93rem; }
+.zutaten li:first-child, .einkauf li:first-child { border-top: 0; }
+.menge { width: 72px; flex: none; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text-2); }
+.zubereitung { padding-left: 22px; margin: 0; }
+.zubereitung li { margin-bottom: 10px; }
+.haken.klein { width: 30px; height: 30px; border-radius: 9px; font-size: .95rem; }
+.einkauf li.gekauft .zutat-name, .einkauf li.gekauft .menge { text-decoration: line-through; color: var(--text-3); }
+.segment.klein button { padding: 6px 8px; font-size: .8rem; }
+.nav-knopf { font-size: .72rem; }
+@media (max-width: 380px) { .rezept-liste { grid-template-columns: 1fr; } }
+
+/* ===== Phase 4: 80er Aerobic/Memphis-Look =====
+   Dicke Konturen, harte Schatten, Konfetti, schräge Titel. Überschreibt die Grundformen oben. */
+body { background-image: var(--muster); background-size: 180px 180px; }
+
+h1, h2, .kachel-wert, .nav-knopf, .chip, .haupt-knopf, .segment button, .tag-knopf {
+  font-family: var(--titel); font-weight: 400; letter-spacing: .02em;
+}
+h1 { display: inline-block; transform: skewX(-7deg); text-shadow: 3px 3px 0 var(--titel-schatten); }
+.tagwahl-text h1, .einheit-kopf h1 { text-shadow: 2px 2px 0 var(--titel-schatten); }
+h2 { letter-spacing: .03em; }
+
+/* Karten und Kacheln: dicker Rand, harter Schatten */
+.karte, .kachel, .chip, .segment.gross, .tipp, .health-knopf, .mini-tag {
+  border: 2.5px solid var(--kontur);
+  box-shadow: var(--schatten);
+}
+.karte .kacheln .kachel { border: 2px solid var(--kontur); box-shadow: none; }
+.kachel:nth-child(4n+1) { border-top: 8px solid var(--akzent); }
+.kachel:nth-child(4n+2) { border-top: 8px solid var(--gut); }
+.kachel:nth-child(4n+3) { border-top: 8px solid var(--gelb); }
+.kachel:nth-child(4n+4) { border-top: 8px solid var(--lila); }
+
+/* Knöpfe */
+.knopf, .rund, .haken, .tag-knopf, .chip { border: 2px solid var(--kontur); }
+.knopf, .chip, .health-knopf { transition: transform .08s, box-shadow .08s; }
+.knopf:active, .chip:active, .health-knopf:active, .rezept-karte:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--schatten-farbe); }
+.haupt-knopf {
+  background: var(--akzent); color: var(--akzent-text);
+  border: 2.5px solid var(--kontur); box-shadow: var(--schatten);
+  text-transform: uppercase; letter-spacing: .08em;
+}
+.health-knopf { background: var(--gut); color: var(--akzent-text); }
+.rund { background: var(--flaeche); }
+.haken.an { background: var(--gut); border-color: var(--kontur); color: var(--akzent-text); }
+.tag-knopf.an, .chip.an, .segment.gross button.an { background: var(--akzent); color: var(--akzent-text); }
+.segment { border: 2px solid var(--kontur); }
+.segment button.an { background: var(--gelb); color: var(--akzent-text); box-shadow: none; border: 0; }
+.segment.gross button.an { border: 0; }
+.fav.an { background: var(--akzent-hell); color: var(--text); }
+
+/* Eingaben */
+input, select, textarea { border: 2px solid var(--kontur); background: var(--flaeche-2); }
+input:focus, select:focus, textarea:focus { border-color: var(--akzent); box-shadow: 3px 3px 0 var(--akzent); }
+input:disabled { border-style: dashed; }
+
+/* Tipp-Kästen in Aerobic-Gelb */
+.tipp { background: var(--gelb); color: var(--akzent-text); }
+.tipp .symbol { border-color: var(--akzent-text); }
+.tipp .zu { color: var(--akzent-text); }
+.vorschau p { background: var(--akzent-hell); border: 2px solid var(--kontur); }
+
+/* Bausteine: Icons in wechselnden Farben, erfüllt = Türkis */
+.bausteine .baustein:nth-child(4n+1) .b-icon { background: var(--akzent-hell); }
+.bausteine .baustein:nth-child(4n+2) .b-icon { background: var(--gut-hell); }
+.bausteine .baustein:nth-child(4n+3) .b-icon { background: var(--flaeche-2); }
+.bausteine .baustein:nth-child(4n+4) .b-icon { background: var(--warn-hell); }
+.b-icon { border: 2px solid var(--kontur); }
+.bausteine .baustein.erfuellt .b-icon { background: var(--gut); }
+.punkt-mini { border: 1.5px solid var(--kontur); background: transparent; }
+.punkt-mini.an:nth-child(4n+1) { background: var(--akzent); }
+.punkt-mini.an:nth-child(4n+2) { background: var(--gelb); }
+.punkt-mini.an:nth-child(4n+3) { background: var(--gut); }
+.punkt-mini.an:nth-child(4n+4) { background: var(--lila); }
+.lob { color: var(--text); background: var(--gut-hell); border: 2px solid var(--kontur); border-radius: 10px; padding: 6px 10px; display: inline-block; }
+.serie { background: var(--gelb); color: var(--akzent-text); border: 2px solid var(--kontur); }
+
+/* Start: Retro-Logo mit Zickzack */
+.start-kopf h1 {
+  font-size: 2.6rem; color: var(--text);
+  text-shadow: 3px 3px 0 var(--gut), 6px 6px 0 var(--akzent);
+}
+.start-kopf::after { content: ''; display: block; height: 10px; width: 160px; margin: 14px auto 0; background: var(--zickzack) repeat-x; }
+.logo img { width: 96px; height: 96px; border-radius: 22px; border: 3px solid var(--kontur); box-shadow: var(--schatten); transform: rotate(-4deg); }
+
+/* Fortschrittsbalken gestreift wie ein Stirnband */
+.fortschritt { border: 2px solid var(--kontur); height: 12px; border-radius: 6px; }
+.fortschritt div { background: repeating-linear-gradient(-45deg, var(--akzent) 0 8px, var(--gelb) 8px 16px, var(--gut) 16px 24px); }
+.nummer { background: var(--gelb); border: 2px solid var(--kontur); color: var(--akzent-text); }
+.steigern { color: var(--text); border: 2px solid var(--gut); }
+.satz { border: 2px solid transparent; }
+.satz.ok { border-color: var(--kontur); background: var(--gut-hell); }
+.kreis { border-color: var(--text-3); }
+.kreis.an { background: var(--gut); border-color: var(--kontur); }
+.tag-spalte strong { border: 2px solid var(--kontur); }
+.essensplan li.heute .tag-spalte strong { background: var(--akzent); color: var(--akzent-text); }
+.pause { background: var(--akzent); color: var(--akzent-text); border: 2.5px solid var(--kontur); box-shadow: var(--schatten); }
+.pause .link { color: var(--akzent-text); }
+.rezept-oben { color: var(--akzent); }
+
+/* Navigation unten */
+.nav { background: var(--flaeche); border-top: 3px solid var(--kontur); backdrop-filter: none; }
+.nav-knopf { letter-spacing: .03em; }
+.nav-knopf.aktiv { background: var(--gelb); color: var(--akzent-text); border: 2px solid var(--kontur); box-shadow: 2px 2px 0 var(--schatten-farbe); }
+.nav-knopf.aktiv .nav-icon { filter: none; }
+.toast { border: 2.5px solid var(--akzent); }
+.segment.gross button { font-size: .86rem; padding: 9px 4px; white-space: nowrap; }
+@media (max-width: 380px) { .segment.gross button { font-size: .78rem; } }
+
+/* ===== Phase 5: Pille & Tagesform ===== */
+.tagesform .karten-kopf { flex-wrap: wrap; }
+.pillen-chip { font-size: .78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 2px solid var(--kontur); background: var(--flaeche-2); white-space: nowrap; }
+.pillen-chip.pause { background: var(--akzent-hell); }
+.energie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 6px 0 10px; }
+.energie-knopf { display: grid; justify-items: center; gap: 2px; padding: 8px 4px; border-radius: 12px; border: 2px solid var(--kontur); background: var(--flaeche); font-family: var(--titel); font-size: .9rem; cursor: pointer; color: var(--text); }
+.energie-knopf.an { background: var(--gelb); color: var(--akzent-text); box-shadow: 3px 3px 0 var(--schatten-farbe); }
+.energie-icon { font-size: 1.5rem; line-height: 1.2; }
+.beschwerden { display: flex; flex-wrap: wrap; gap: 6px; }
+.klein-chip { padding: 5px 11px; font-size: .82rem; box-shadow: none; font-family: var(--schrift); font-weight: 700; }
+.klein-chip.an { box-shadow: 2px 2px 0 var(--schatten-farbe); }
+.stufe { margin-top: 12px; padding: 10px 12px; border-radius: 12px; border: 2px solid var(--kontur); background: var(--gut-hell); font-size: .9rem; }
+.stufe-sanft, .stufe-ruhe { background: var(--akzent-hell); }
+.stufe p { margin: 6px 0 0; }
+.angepasst { font-size: .85rem; font-weight: 700; color: var(--text-2); margin: 0 0 6px; }
+.sanft-hinweis { background: var(--akzent-hell); border: 2px solid var(--kontur); border-radius: 12px; padding: 8px 12px; font-size: .9rem; margin-bottom: 12px; }
+.schalter { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 4px; font-size: .9rem; cursor: pointer; }
+.schalter input { width: 22px; height: 22px; flex: none; margin: 1px 0 0; accent-color: var(--akzent); }
+.zeile { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
+.zeile input { flex: 1; }
+.band { fill: var(--band); }
+.kalender ~ .legende .key.band-key { background: color-mix(in srgb, var(--lila) 22%, var(--flaeche)); border-color: color-mix(in srgb, var(--lila) 55%, var(--flaeche)); }
+.key.band-key { width: 14px; height: 10px; border-radius: 2px; background: var(--band); border: 1px solid var(--linie); margin-left: 8px; }
+.mini-badge { display: flex; gap: 1px; }
+.segment button { min-width: 0; }
+.auswahl-stapel { display: grid; gap: 10px; }
+
+/* Navigation: eigene Icons (js/icons.js) – Linie in Textfarbe, bunte Form dahinter */
+.nav-icon { display: grid; place-items: center; height: 30px; filter: none; opacity: 1; color: var(--text-2); }
+.nav-icon svg { display: block; }
+.nav-icon .ic-form { opacity: .45; }
+.ic-heute .ic-form { fill: var(--gelb); }
+.ic-verlauf .ic-form { fill: var(--gut); }
+.ic-training .ic-form { fill: var(--akzent); }
+.ic-rezepte .ic-form { fill: var(--lila); }
+.ic-ich .ic-form { fill: var(--akzent); }
+.nav-knopf.aktiv .nav-icon { color: var(--akzent-text); }
+.nav-knopf.aktiv .ic-form { opacity: 1; }
+.nav-knopf.aktiv.ic-heute .ic-form, .nav-knopf.aktiv .ic-heute .ic-form { fill: var(--akzent); }
+
+/* ---------- Eigene Icons statt Emojis (v0.7.0) ---------- */
+.ic { display: inline-flex; align-items: center; justify-content: center; vertical-align: -0.22em; margin-right: .32em; flex: none; line-height: 0; }
+.ic svg { width: 1.2em; height: 1.2em; }
+.b-icon .ic, .haken .ic, .rund .ic, .mini-badge .ic, .energie-icon.ic, .fav-zeichen .ic { margin: 0; }
+.b-icon .ic svg { width: 24px; height: 24px; }
+.energie-icon.ic svg { width: 28px; height: 28px; }
+.energie-icon.ic { display: flex; margin: 0 auto 2px; }
+.haken .ic svg { width: 70%; height: 70%; }
+.haken .ic { width: 100%; height: 100%; }
+.rund .ic svg { width: 20px; height: 20px; }
+.mini-badge .ic svg { width: 16px; height: 16px; }
+.legende .ic { margin-right: 0; }
+.legende .ic + .ic, .legende .ic:not(:first-child) { margin-left: 10px; }
+.knopf .ic svg { width: 1.3em; height: 1.3em; }
+.rezept-fakten .ic { margin-right: .2em; }
+.angepasst .ic, .lob .ic { color: var(--akzent); }
+[data-beschwerde="blutung"] .ic { color: var(--akzent); }
+.fav-zeichen { color: var(--akzent); }
+.sanft-hinweis .ic { color: var(--akzent); }
+.schnellstart #kurzbefehl-datei { display: block; text-align: center; margin: 2px 0 8px; font-size: .85rem; }
+
+/* ---------- Phase 7: Zyklus-Statistik ---------- */
+.kal-titel { flex: 1; text-align: center; text-transform: capitalize; }
+.kalender { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 6px 0 8px; }
+.kal-kopf { text-align: center; font-size: .72rem; font-weight: 700; color: var(--text-3); padding-bottom: 2px; }
+.kal-tag {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 2px;
+  min-height: 46px; padding: 4px 0 3px; border-radius: 9px; border: 1.5px solid var(--linie);
+  background: var(--flaeche); color: var(--text); font: inherit; cursor: pointer;
+}
+.kal-tag.kal-pause { background: color-mix(in srgb, var(--lila) 22%, var(--flaeche)); border-color: color-mix(in srgb, var(--lila) 55%, var(--flaeche)); }
+.kal-tag.heute { border: 2.5px solid var(--kontur); }
+.kal-tag.zukunft, .kal-tag:disabled { color: var(--text-3); cursor: default; opacity: 1; }
+.kal-nr { font-size: .8rem; font-weight: 700; line-height: 1; }
+.kal-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; color: var(--akzent); }
+.kal-icons .ic { margin: 0; }
+.kal-icons .ic svg { width: 12px; height: 12px; }
+.kal-mehr { font-size: .65rem; font-weight: 800; }
+.legende-teil { display: inline-flex; align-items: center; margin-left: 8px; }
+.legende-teil .ic { color: var(--akzent); margin-right: 3px; }
+.legende-teil .ic svg { width: 14px; height: 14px; }
+
+.phasen { width: 100%; border-collapse: separate; border-spacing: 3px; font-size: .85rem; }
+.phasen th, .phasen td { text-align: center; padding: 6px 4px; }
+.phasen thead th { font-size: .75rem; color: var(--text-2); }
+.phasen thead th.phase-pause { background: var(--band); border-radius: 6px; }
+.phasen tbody th { text-align: left; font-weight: 600; color: var(--text-2); }
+.phasen tbody th .ic { color: var(--akzent); }
+.phasen td { font-variant-numeric: tabular-nums; font-weight: 700; }
+.phasen tr.trenner th, .phasen tr.trenner td { border-top: 2px solid var(--linie); }
+.phasen td.heat { border-radius: 6px; }
+.heat-0 { background: transparent; color: var(--text-3); font-weight: 500; }
+.heat-1 { background: color-mix(in srgb, var(--serie-1) 18%, var(--flaeche)); }
+.heat-2 { background: color-mix(in srgb, var(--serie-1) 38%, var(--flaeche)); }
+.heat-3 { background: color-mix(in srgb, var(--serie-1) 62%, var(--flaeche)); color: var(--text); }
+.heat-4 { background: var(--serie-1); color: var(--flaeche); }
+
+/* ---------- Phase 8: Meine Bausteine, Kataloge ---------- */
+.einstellungen .baustein.aus .b-label, .einstellungen .baustein.aus .b-icon { opacity: .45; }
+.einstellungen input.klein { width: 84px; text-align: right; }
+.eigener { margin-top: 12px; padding-top: 12px; border-top: 2px solid var(--linie); }
+.katalog-gruppe { margin: 18px 0 8px; }
+.uebung-info summary { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; cursor: pointer; padding: 8px 0; }
+.uebung-info { border-top: 1px solid var(--linie); }
+.uebung-info p { margin: 0 0 10px; font-size: .9rem; }
+.uebung-info .muskeln { color: var(--text-3); font-size: .8rem; }
+
+/* ---------- Datumsfelder auf dem iPhone (Safari gibt ihnen sonst eine feste Mindestbreite) ---------- */
+input[type="date"] {
+  -webkit-appearance: none; appearance: none;
+  display: block; width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box;
+  min-height: 48px; text-align: left;
+}
+input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.zweier > * { min-width: 0; }
+select { min-width: 0; max-width: 100%; text-overflow: ellipsis; }
+
+/* ---------- Einheitliche Feldhöhe (iOS rendert select und date sonst unterschiedlich hoch) ---------- */
+input:not([type="checkbox"]):not([type="file"]):not(.klein), select {
+  height: 48px; box-sizing: border-box; line-height: 24px;
+}
+select {
+  -webkit-appearance: none; appearance: none; padding-right: 36px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text) 50%), linear-gradient(135deg, var(--text) 50%, transparent 50%);
+  background-position: calc(100% - 19px) 52%, calc(100% - 13px) 52%;
+  background-size: 6px 6px; background-repeat: no-repeat;
+  white-space: nowrap; overflow: hidden;
+}
+
+/* ---------- Phase 9: Trainings-Tagebuch ---------- */
+.tagebuch { margin-top: 10px; display: grid; gap: 8px; }
+.fortschritt-zeile { margin: 10px 0 4px; font-size: 1.1rem; }
+.mini-chart-box { margin-top: 4px; }
+.mini-chart { width: 100%; height: auto; display: block; overflow: visible; }
+.mini-chart .gitter { stroke: var(--gitter); stroke-width: 1; }
+.mini-chart .achse { fill: var(--text-3); font-size: 11px; }
+.mini-chart .serie { fill: none; stroke: var(--serie-1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.mini-chart .marke { fill: var(--serie-1); stroke: var(--flaeche); stroke-width: 2; }
+.mini-chart .marke.leicht { fill: var(--flaeche); stroke: var(--serie-1); }
+.mini-chart .treffer { fill: transparent; cursor: pointer; }
+.mini-chart .punkt-gruppe:focus { outline: none; }
+.mini-chart .punkt-gruppe:focus .marke, .mini-chart .punkt-gruppe:hover .marke { r: 6.5; }
+.chart-info { font-size: .85rem; color: var(--text-2); margin: 4px 0 6px; min-height: 1.3em; }
+.chronik { list-style: none; margin: 0; padding: 0; }
+.chronik > li { padding: 10px 0; border-top: 1px solid var(--linie); }
+.chronik > li:first-child { border-top: 0; padding-top: 0; }
+.chronik-kopf { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.chronik-kopf span { color: var(--text-2); font-size: .9rem; }
+.chronik-saetze { margin-left: auto; font-weight: 700; font-variant-numeric: tabular-nums; }
+.chronik-saetze.weniger { color: var(--text); }
+.chronik-marken { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.chronik-marken:empty { display: none; }
+.ereignisse { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 3px; font-size: .88rem; }
+.ereignis .ic { color: var(--text-3); }
+.ereignis { display: flex; align-items: flex-start; gap: 2px; }
+.ereignis .ic { margin-top: 1px; }
+.ereignis-mehr .ic { color: var(--gut); }
+.ereignis-mehr { font-weight: 600; }
+#chronik-mehr { margin-top: 10px; }
+.chronik-notiz { margin: 6px 0 0; font-size: .88rem; color: var(--text-2); font-style: italic; }
+
+/* ---------- Phase 10: Eigene Trainings, Sport, Bibliothek ---------- */
+.segment.segment-scroll { display: flex; overflow-x: auto; scrollbar-width: none; }
+.segment.segment-scroll::-webkit-scrollbar { display: none; }
+.segment.segment-scroll button { flex: 0 0 auto; padding-left: 16px; padding-right: 16px; white-space: nowrap; }
+.sport-zeile { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.sport-zeile .satz-feld input { width: 72px; }
+.sport-treffer { margin: 10px 0 4px; }
+.sport-treffer .chip .ic, .sport-liste .ic { color: var(--akzent); }
+.sport-liste { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.sport-liste li { display: flex; align-items: center; gap: 6px; }
+.sport-liste li span:not(.ic) { flex: 1; }
+.einheiten-liste li { align-items: center; }
+#einheit-neu { margin-top: 10px; }
+#uebung-suche { margin-bottom: 10px; }
+.katalog-ergebnis { margin-top: 6px; }
+.editor-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: ue; }
+.editor-uebung { padding: 10px 0; border-top: 1px solid var(--linie); }
+.editor-uebung:first-child { border-top: 0; padding-top: 0; }
+.editor-kopf { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.editor-aktionen { display: flex; gap: 6px; flex: none; }
+.editor-werte { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.editor-werte output { min-width: 64px; text-align: center; font-weight: 700; }
+.editor-werte input.klein { width: 56px; }
+#editor-suche { margin-bottom: 8px; }
+.editor-treffer { display: grid; gap: 6px; }
+.treffer-zeile {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; width: 100%;
+  padding: 10px 12px; border-radius: 12px; border: 2px solid var(--kontur); background: var(--flaeche); color: var(--text); font: inherit; cursor: pointer;
+}
+.treffer-zeile .muskeln { color: var(--text-3); font-size: .8rem; }
+.eigene-uebung { margin-top: 8px; padding-top: 10px; border-top: 2px dashed var(--linie); }
+#training-fertig { margin-bottom: 72px; }
+
+/* ---------- Chips: umbrechen statt die Seite zu verbreitern (Sport-Vorschläge auf dem iPhone) ---------- */
+.chips { flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: 2px; white-space: nowrap; flex: 0 0 auto; max-width: 100%; }
+.chip .ic { margin-right: 4px; }
+
+/* ===== Phase 11: ein bisschen ruhiger =====
+   Gleicher 80er-Charakter, weniger Lautstärke: dünnere Linien, kleinere Schatten, weniger Farbwechsel,
+   leiseres Konfetti. Bunt bleibt nur, was etwas bedeutet (aktiv, erfüllt, Hauptaktion). */
+.karte, .kachel, .segment.gross, .tipp, .health-knopf { border-width: 2px; }
+.chip, .mini-tag { border-width: 1.5px; box-shadow: none; }
+.chip.an { box-shadow: 2px 2px 0 var(--schatten-farbe); }
+.kachel:nth-child(n) { border-top-width: 5px; }
+h1 { text-shadow: 2px 2px 0 var(--titel-schatten); }
+.tagwahl-text h1, .einheit-kopf h1 { text-shadow: 1.5px 1.5px 0 var(--titel-schatten); }
+
+/* Hauptknopf: ohne Großbuchstaben, ruhiger lesbar */
+.haupt-knopf { text-transform: none; letter-spacing: .02em; font-size: 1.05rem; }
+
+/* Eingaben und kleine Knöpfe mit feinerer Kontur */
+input, select, textarea, .segment, .rund, .haken, .tag-knopf { border-width: 1.5px; }
+input:focus, select:focus, textarea:focus { box-shadow: 2px 2px 0 var(--akzent); }
+
+/* Tipps: zarter Gelbton statt Vollgelb */
+.tipp { background: color-mix(in srgb, var(--gelb) 30%, var(--flaeche)); color: var(--text); box-shadow: none; }
+.tipp .zu, .tipp .symbol { color: var(--text); border-color: var(--text); }
+
+/* Bausteine: ein ruhiger Grundton, Farbe nur bei „erfüllt“ */
+.bausteine .baustein:nth-child(n) .b-icon { background: var(--flaeche-2); border-width: 1.5px; }
+.bausteine .baustein.erfuellt:nth-child(n) .b-icon { background: var(--gut-hell); }
+.punkt-mini.an:nth-child(n) { background: var(--gut); }
+
+/* Fortschrittsbalken: einfarbig */
+.fortschritt div { background: var(--akzent); }
+
+/* Navigation: feinere Linie */
+.nav { border-top-width: 2px; }
+.nav-knopf.aktiv { border-width: 1.5px; }
+
+/* Etwas mehr Luft zwischen den Karten */
+.ansicht > .karte, .ansicht > section.karte { margin-bottom: 18px; }
+
+/* Drei Kacheln auch auf dem Handy nebeneinander, kompakt */
+@media (max-width: 520px) {
+  .kacheln.drei:not(.fakten) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .kacheln.drei .kachel { padding: 10px; }
+  .kacheln.drei .kachel-wert { font-size: 1.05rem; }
+  .kacheln.drei .kachel-label, .kacheln.drei .kachel-zusatz { font-size: .72rem; }
+}
+
+/* ---------- Phase 12: Essen & Kalorien (nur Info, kein Rot) ---------- */
+.klein-knopf { padding: 6px 12px; font-size: .9rem; }
+.essen-summen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin: 6px 0 4px; }
+.essen-zahl { font-size: .85rem; color: var(--text-2); margin-bottom: 6px; }
+.essen-zahl strong { font-size: 1.25rem; color: var(--text); font-variant-numeric: tabular-nums; }
+.essen-balken { height: 8px; border-radius: 4px; background: var(--flaeche-2); border: 1.5px solid var(--linie); overflow: hidden; }
+.essen-balken div { height: 100%; border-radius: 3px; }
+.essen-balken.kcal div { background: var(--serie-1); }
+.essen-balken.eiweiss div { background: var(--gut); }
+.essen-liste { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; }
+.essen-liste li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 8px; align-items: center; font-size: .9rem; padding: 4px 0; border-top: 1px solid var(--linie); }
+.essen-mz { font-size: .72rem; font-weight: 700; color: var(--text-3); min-width: 58px; }
+.essen-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.essen-wert { font-variant-numeric: tabular-nums; color: var(--text-2); }
+.essen-treffer { display: grid; gap: 6px; margin-top: 10px; }
+.menge-zeile { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.menge-zeile output { min-width: 120px; text-align: center; font-weight: 700; }
+.essen-vorschau { font-size: 1.1rem; margin: 12px 0; }
+.scan-video { width: 100%; border-radius: 12px; border: 2px solid var(--kontur); margin: 10px 0; background: var(--flaeche-2); }
+#scan-start .ic { margin-right: 6px; }
+.essen-mahlzeit { margin-bottom: 14px; }
+.essen-mahlzeit button { padding-left: 2px; padding-right: 2px; font-size: .85rem; }
+[data-segment=essen-tab] { margin-bottom: 14px; }
+#essen-gramm { color: var(--text); }
